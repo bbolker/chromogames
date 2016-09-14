@@ -1,0 +1,19 @@
+The following constitutes a round in EvoPro2_3,EvoPro2_4 and EvoAlt. 
+
+(1) A wxw lattice of cells is initialized. The size of the lattice is given by the user. 
+(2) Parameters A,B and colour are randomly assigned to each cell in the lattice. The user can specify the inital range these parameters can fall in. 
+(3) Two cells are choosen at random. One is called the choosen cell and one is called the neighbour cell. The neighbour cell is found by setting a square neighbourhood of side length set by the user. The neighbour if found from this neighbourhood. 
+(4) Based on the logistics equation the probability that each cell will coperate is calculated. Using these probabilties the neighbourcell and choosen cell either cooperate or not. 
+(5) A payoff matrix is used to calculate the change in both cell's fitness after the interaction. 
+-in EvoPro2_3 this pay off is Prisoner's Dilemma 
+-in EvoPro2_4 a chicken pay off structure is used 
+-in EvoAlt the user can specify either PD or chicken 
+(6) A cell is randomly selected to die. To die means that all parameters are set to zero. Based on their fitness either the choosen or neighbour cell's parameters replace the dead cell. 
+(7) A mutation occurs on each parameter of the dead cell. The user can specify the std dev of the lognormal used to mutate A,B and colour. 
+(8) Results are updated in a matrix. The report type and frequency can be specified by the user. 
+
+The user can specify how many rounds of the game are played. 
+
+EvoTest is used to plot timeseries. 
+Fullstatesim gives an animation of the wxw grid at a given report freqency for a specified parameter. 
+loopvariables outputs serveral time series of one variable with states differing only by one parameter. 
