@@ -1,0 +1,31 @@
+#Log of meetings 
+
+/September 7 2016/ 
+
+- First meeting
+- Tasks:	 
+
+(1) Make a github account and learn how to make and add to repositories from the terminal. 
+	- username: whitere123 
+	- password :L _ _ _ _ _ _ _ _ 3 
+	- email : whitere@mcmaster.ca
+ 
+(2) Learn how to profile python code. 
+	- use cProfile library or line_profiler
+ 
+(3) Find the major differences between the Jansen/Van Baleen (JV)  & Traulsen and Nowak (TM) papers 
+	- JV uses spatial structure: each individual plays all of its neighbors and recieves a score (pg 2 www.nature.com/nature). Players put offspring in neighbouring cells with probability proportional to payoff. Rare mutations occur. Mating occurs with some probability (recombinatioon). 
+	- JV looks at tightly coupled genes (row = 0) for which dynamics are highly unstable. They also look at loosely linked seperate genes which continously generate new tag trait combinations ( larger row) and prevent fixation to occur. 
+	- TM uses a well mixed population: two individuals are choosen at random. The first individual adopts the second's strategy with probabilty (1/(1+exp(B(p1-p2)))) pi = payoff, B = selection intensity > 0. TM examines the benefit to cost ratio (b/c) for which cooperation is facilitated. They find b/c for three different genetic models.  
+	- Case [9] of TM is similar to JV's model. 
+
+/September 14 2016/ 
+
+- Second meeting 
+- Setup chromogames repository so that I can access it from my machine. Also discussed task (3) from last week's meeting. 
+- Tasks: 
+
+(1) Organize the work from MATH 4W03 into chromogames repository. 
+(2) Study the nose python lib. Come up with several ideas for test runs. 
+(3) Start to profile EvoAlt8.py.  
+  
