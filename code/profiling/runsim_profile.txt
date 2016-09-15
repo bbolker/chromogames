@@ -1,0 +1,234 @@
+profiling..... standby
+profiling complete
+Wrote profile results to profile8.py.lprof
+Timer unit: 1e-06 s
+
+Total time: 14.9841 s
+File: profile8.py
+Function: logistic at line 11
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+    11                                           @profile         
+    12                                           def logistic(x):
+    13  16900000     14984088      0.9    100.0          return 1.0/(1.0+math.exp(-x))
+
+Total time: 0.000173 s
+File: profile8.py
+Function: init_sim_random at line 15
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+    15                                           @profile
+    16                                           def init_sim_random(a_range_init,b_range_init,colour_init,w):
+    17                                               
+    18                                               ## The three parameters a,b and colour are given to each cell in the 100x100 lattice.
+    19         1            2      2.0      1.2      if a_range_init[0]==0 and a_range_init[1]==0:
+    20                                                   parAlst = numpy.zeros((w,w))
+    21                                               else:
+    22         1           61     61.0     35.3          parAlst = numpy.random.uniform(a_range_init[0],a_range_init[1],size=(w,w))
+    23         1            1      1.0      0.6      if b_range_init[0]==0 and b_range_init[1]==0:
+    24                                                   parBlst = numpy.zeros((w,w))
+    25                                               else:
+    26         1           54     54.0     31.2          parBlst = numpy.random.uniform(b_range_init[0],b_range_init[1],size=(w,w))
+    27         1            1      1.0      0.6      if colour_init[0]==0 and colour_init[1]==0:
+    28                                                   colourlst = numpy.zeros((w,w))
+    29                                               else:
+    30         1           53     53.0     30.6          colourlst = numpy.random.uniform(colour_init[0],colour_init[1],size=(w,w))
+    31         1            1      1.0      0.6      return(parAlst,parBlst,colourlst)
+
+Total time: 119.485 s
+File: profile8.py
+Function: PY at line 33
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+    33                                           @profile
+    34                                           def PY(m,n,nsize,ntype,w,parAlst,R,S,T,P):
+    35                                           	
+    36    600000       598865      1.0      0.5  	D1=range(m-nsize,m+1+nsize)
+    37    600000       499916      0.8      0.4          D2=range(n-nsize,n+1+nsize)
+    38    600000       301368      0.5      0.3  	X=[]
+    39    600000       315669      0.5      0.3  	if ntype=='neu':
+    40    600000       284271      0.5      0.2  		count1=0
+    41    600000       267829      0.4      0.2                  py=0
+    42   3600000      2124926      0.6      1.8                  for i in range(len(D1)):
+    43   3000000      2110175      0.7      1.8                          v=len(D1)/2
+    44   3000000      1853879      0.6      1.6                          d=abs(i-v)
+    45  10800000      7567732      0.7      6.3                          for j in range(d,len(D1)-d):
+    46   7800000      4791246      0.6      4.0                                  I1=D1[i]%w
+    47   7800000      4111735      0.5      3.4                                  I2=D2[j]%w
+    48   7800000     33498138      4.3     28.0                                  coop_ctr = logistic(parAlst[m][n])
+    49   7800000     31509784      4.0     26.4  				coop_nbr = logistic(parAlst[I1][I2])
+    50   7800000     11237760      1.4      9.4                                  t_ctr=coop_ctr*coop_nbr*R + coop_ctr*(1-coop_nbr)*S + (1-coop_ctr)*coop_nbr*T + (1-coop_ctr)*(1-coop_nbr)*P
+    51   7800000      4330679      0.6      3.6                                  if (m==I1 and n==I2):
+    52    600000       273105      0.5      0.2                                          pass
+    53                                                                           else:
+    54   7200000      4073520      0.6      3.4                                          py+=t_ctr
+    55   7200000      5163845      0.7      4.3  					X.append([I1,I2])
+    56   7200000      3860602      0.5      3.2  					count1+=1
+    57    600000       426199      0.7      0.4  	Y=[m,n,py/count1]
+    58                                           	#print(X)
+    59    600000       283981      0.5      0.2  	return(Y) 
+
+Total time: 203.189 s
+File: profile8.py
+Function: runsim at line 61
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+    61                                           @profile
+    62                                           def runsim(roundnum=10000,CHECK=False,
+    63                                           	   switch='off',
+    64                                                      a_range_init=(0,1.0),
+    65                                                      colour_init=(0,5.0),
+    66                                           	   R=3,
+    67                                           	   S=1,
+    68                                           	   T=4,
+    69                                           	   P=0,
+    70                                                      init_type="random",
+    71                                                      b_range_init=(-4.0,4.0),
+    72                                           	   ntype='mor',              ## mor = moore, neu=neuman
+    73                                                      nsize=1,                  ## neighbourhood size
+    74                                                      w=100,                    ## world size
+    75                                                      result_type="fullstate",  ## 'timeseries', 'endstate'
+    76                                                      rpt_freq=1000,
+    77                                                      mut_sd = (0.01,)*3,  ## std dev of mutation (A,B,colour)
+    78                                                      mut_type = "add",   ## multiplicative ("mult") or additive ("add")
+    79                                                      seed=None):
+    80                                               """
+    81                                               docstring should go here describing parameters
+    82                                               """
+    83                                           
+    84         1            2      2.0      0.0      n_rpt = roundnum // rpt_freq + 1
+    85         1            2      2.0      0.0      if result_type=="timeseries":
+    86         1            4      4.0      0.0         results = numpy.zeros((n_rpt,8))
+    87                                               elif result_type=="fullstate":
+    88                                                  results = numpy.zeros((n_rpt,3,w,w))
+    89                                               elif result_type=="endstate":
+    90                                                   results=numpy.zeros((1,3,w,w)) 
+    91                                               else:
+    92                                                   raise ValueError("unknown result_type")
+    93                                               
+    94                                               ##plant a seed.
+    95         1            2      2.0      0.0      if (seed != None):
+    96         1            4      4.0      0.0          numpy.random.seed(seed)
+    97                                               
+    98                                               ## The list Fitlst is made into an appropriate-sized grid.
+    99         1           11     11.0      0.0      Fitlst = numpy.zeros((w,w))
+   100                                           
+   101         1            1      1.0      0.0      if (init_type=="random"):
+   102         1          182    182.0      0.0          parAlst,parBlst,colourlst = init_sim_random(a_range_init,b_range_init,colour_init,w)
+   103                                               
+   104         1            1      1.0      0.0      x = 1
+   105                                               #The game loop is started.
+   106                                               
+   107         1            1      1.0      0.0      counter=0
+   108     50001        61500      1.2      0.0      while x <= roundnum: 
+   109                                                   #Randomly selects a cell to die. A death is simulated by removing all of the information from the cell and making it zero.
+   110                                                   
+   111     50000        75454      1.5      0.0          dc1 = numpy.random.randint(0,w)                             
+   112     50000        68183      1.4      0.0          dc2 = numpy.random.randint(0,w)
+   113                                           	
+   114     50000        93072      1.9      0.0  	D1=range(dc1-nsize,dc1+1+nsize)
+   115     50000        80916      1.6      0.0  	D2=range(dc2-nsize,dc2+1+nsize) 
+   116     50000        92639      1.9      0.0  	EX=[]
+   117                                           	
+   118     50000        63763      1.3      0.0  	if ntype=='neu':
+   119     50000        60638      1.2      0.0  		count2=0
+   120     50000        59891      1.2      0.0  		PX=0
+   121    300000       413324      1.4      0.2  		for i in range(len(D1)):
+   122    250000       366072      1.5      0.2  			v=len(D1)/2
+   123    250000       340381      1.4      0.2                          d=abs(i-v) 
+   124    900000      1301354      1.4      0.6  			for j in range(d,len(D1)-d):
+   125    650000       918367      1.4      0.5  				Z1=D1[i]%w
+   126    650000       829015      1.3      0.4  				Z2=D2[j]%w
+   127    650000       823645      1.3      0.4  				if switch=='off':
+   128    650000      3403225      5.2      1.7                                          coop_ctr = logistic(parAlst[dc1][dc2])
+   129    650000      3192139      4.9      1.6                                          coop_nbr = logistic(parAlst[Z1][Z2])
+   130    650000      1439265      2.2      0.7  					t_ctr=coop_ctr*coop_nbr*R + coop_ctr*(1-coop_nbr)*S + (1-coop_ctr)*coop_nbr*T + (1-coop_ctr)*(1-coop_nbr)*P 
+   131    650000       836980      1.3      0.4  					if (dc1==Z1 and dc2==Z2):
+   132     50000        62647      1.3      0.0  						pass
+   133                                           					else:
+   134    600000       796495      1.3      0.4  						PX+=t_ctr
+   135    600000    170039105    283.4     83.7  						kd=PY(Z1,Z2,nsize,ntype,w,parAlst,R,S,T,P) 
+   136    600000       843506      1.4      0.4  						EX.append(kd)
+   137    600000       778287      1.3      0.4  						count2+=1 
+   138     50000        79162      1.6      0.0  		EX.append([dc1,dc2,PX/count2]) 
+   139                                           		#print(EX)    
+   140    700000       897154      1.3      0.4  	for i in EX:
+   141    650000      1164640      1.8      0.6  		r=1/(1.0+math.exp((EX[4][2]-i[2])/0.1))  
+   142    650000       929548      1.4      0.5  		i.append(r) 
+   143                                           	#print(EX)
+   144     50000        63793      1.3      0.0  	counter=0 
+   145    700000       880042      1.3      0.4  	for i in EX:
+   146    650000       872265      1.3      0.4  		if (i[0]==dc1 and i[1]==dc2):
+   147     50000        62064      1.2      0.0  			pass
+   148                                           		else:
+   149    600000       811340      1.4      0.4  			  counter+=i[3] 
+   150                                           	
+   151    700000       898504      1.3      0.4  	for i in EX:
+   152    650000       875865      1.3      0.4  		if (i[0]==dc1 and i[1]==dc2):
+   153     50000        62071      1.2      0.0  			pass 
+   154                                           		else:
+   155    600000       862961      1.4      0.4  			i.append(i[3]/counter)
+   156     50000        63531      1.3      0.0  	W=1
+   157    700000       889605      1.3      0.4  	for i in EX:
+   158    650000       889574      1.4      0.4  		if (i[0]==dc1 and i[1]==dc2):
+   159     50000        61053      1.2      0.0                          pass
+   160                                           		else:
+   161    600000       839306      1.4      0.4  			W*=(1-i[3])  
+   162     50000       110328      2.2      0.1  	det5=float(numpy.random.uniform(0,1.0)) 
+   163     50000        70381      1.4      0.0  	if det5 < W: 
+   164        12           16      1.3      0.0  		pass 
+   165                                           	else: 
+   166     49988        83548      1.7      0.0  		det6=float(numpy.random.uniform(0,1.0)) 
+   167     49988        63328      1.3      0.0  		F=0 
+   168    699832       893097      1.3      0.4  		for i in EX:
+   169    649844       887687      1.4      0.4  			if (i[0]==dc1 and i[1]==dc2):
+   170     49988        61647      1.2      0.0  				pass
+   171                                           			else:
+   172    599856       868510      1.4      0.4  				if (F<det6<(F+i[4])):
+   173     49988       133138      2.7      0.1  					parAlst[dc1][dc2]=parAlst[i[0]][i[1]] 
+   174     49988       106087      2.1      0.1  					parBlst[dc1][dc2]=parBlst[i[0]][i[1]]
+   175     49988       102789      2.1      0.1  					colourlst[dc1][dc2]=colourlst[i[0]][i[1]] 
+   176     49988       105083      2.1      0.1  					Fitlst[dc1][dc2]=Fitlst[i[0]][i[1]]
+   177                                           					#print(F,'<',det6,'<',(F+i[4]))
+   178                                           				else: 
+   179                                           					pass  				  
+   180    599856       816284      1.4      0.4  				F+=i[4]
+   181                                           		
+   182                                           	#print(EX) 
+   183                                                   ## save old values (for reporting only)
+   184     50000        92116      1.8      0.0          y1=parAlst[dc1][dc2]
+   185     50000        82978      1.7      0.0          y2=parBlst[dc1][dc2]
+   186     50000        82194      1.6      0.0          y3=colourlst[dc1][dc2]
+   187                                           
+   188                                                   #Mutation occurs each round.
+   189     50000        96450      1.9      0.0  	DET=float(numpy.random.uniform(0,1.0)) 
+   190     50000        66980      1.3      0.0  	if DET < 0.01:
+   191       501          666      1.3      0.0          	if mut_type=="add":
+   192       501         1966      3.9      0.0              	   parAlst[dc1][dc2] += numpy.random.normal(0,mut_sd[0])
+   193                                                       	  #parBlst[dc1][dc2] += numpy.random.normal(0,mut_sd[1])
+   194                                                       	  #colourlst[dc1][dc2] += numpy.random.normal(0,mut_sd[2])
+   195                                                    	else:
+   196                                                    	   raise ValueError("unknown mutation type")
+   197                                                   
+   198     50000        70041      1.4      0.0          if x%rpt_freq==0:
+   199        50           60      1.2      0.0              if result_type=="timeseries":
+   200                                                           # compute summary statistics
+   201        50        21608    432.2      0.0                  cur_vals = (numpy.mean(parAlst),numpy.mean(parBlst),numpy.mean(colourlst),numpy.mean(Fitlst),numpy.std(parAlst),numpy.std(parBlst),numpy.std(colourlst),numpy.std(Fitlst))
+   202        50          587     11.7      0.0                  results[x//rpt_freq,] = cur_vals
+   203                                                       elif result_type=="fullstate":
+   204                                                           results[x//rpt_freq,0,] = parAlst
+   205                                                           results[x//rpt_freq,1,] = parBlst
+   206                                                           results[x//rpt_freq,2,] = colourlst
+   207     50000        65930      1.3      0.0          if result_type=="endstate":
+   208                                                       results[1,0,]=parAlst
+   209                                                       results[1,1,]=parBlst
+   210                                                       results[1,2,]=colourlst
+   211                                                           
+   212     50000        63133      1.3      0.0          x+=1
+   213                                               
+   214         1            1      1.0      0.0      return(results)
+
