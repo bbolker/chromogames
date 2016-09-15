@@ -25,7 +25,19 @@
 - Setup chromogames repository so that I can access it from my machine. Also discussed task (3) from last week's meeting. 
 - Tasks: 
 
-(1) Organize the work from MATH 4W03 into chromogames repository. 
-(2) Study the nose python lib. Come up with several ideas for test runs. 
+(1) Organize the work from MATH 4W03 into chromogames repository.
+	- constructed 3 folders ./models , ./plotting & ./profiling 
+	- also constructed a log file to keep a log of our progress. If you are reading this you are currently viewing the log file. 
+ 
+(2) Study the nose python lib. Come up with several ideas for test runs.
+	-  
+
 (3) Start to profile EvoAlt8.py.  
+	- Steps for installing kernprof (line_profiler) 
+		(a) 'sudo apt-get install python-dev build-essential' installing cython 
+		(b) 'pip install line_profiler' installing line_profiler 
+		(c) Step b created an executable: /home/robert/.local/bin/kernprof 
+		(d) A line by line profile is performed by typing : " /home/robert/.local/bin/kernprof -l -v profile8.py " 
+
+ 
   
