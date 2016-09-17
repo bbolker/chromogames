@@ -28,6 +28,7 @@ def init_sim_random(a_range_init,b_range_init,colour_init,w):
         colourlst = numpy.random.uniform(colour_init[0],colour_init[1],size=(w,w))
     return(parAlst,parBlst,colourlst)
 
+#A function that returns an array with three elements. The first two elements are the position of the agent/organism in the lattice. The third element is the (m,n)'s average payoff with its neuman neighbourhood of size "nsize". 
 def PY(m,n,nsize,ntype,w,parAlst,R,S,T,P):
 	
 	D1=range(m-nsize,m+1+nsize)
@@ -55,6 +56,7 @@ def PY(m,n,nsize,ntype,w,parAlst,R,S,T,P):
 	#print(X)
 	return(Y) 
 
+#A funtion that runs a game similar to that in the univie tutorial on spatial mixed strategies. 
 def runsim(roundnum=10000,CHECK=False,
 	   switch='off',
            a_range_init=(0,1.0),
@@ -76,7 +78,7 @@ def runsim(roundnum=10000,CHECK=False,
     """
     docstring should go here describing parameters
     """
-
+	# decide on how you would like the results of the game. 	
     n_rpt = roundnum // rpt_freq + 1
     if result_type=="timeseries":
        results = numpy.zeros((n_rpt,8))
@@ -111,6 +113,7 @@ def runsim(roundnum=10000,CHECK=False,
 	D2=range(dc2-nsize,dc2+1+nsize) 
 	EX=[]
 	
+	#The average payoff of each cell centered at (dc1,dc2) and radius nsize is calculated. EX stores the cells locations and corresponding average payoff with their respective neighbours. 
 	if ntype=='neu':
 		count2=0
 		PX=0
@@ -131,25 +134,26 @@ def runsim(roundnum=10000,CHECK=False,
 						kd=PY(Z1,Z2,nsize,ntype,w,parAlst,R,S,T,P) 
 						EX.append(kd)
 						count2+=1 
-		EX.append([dc1,dc2,PX/count2]) 
-		#print(EX)    
+		EX.append([dc1,dc2,PX/count2])
+
+	# Appending the value of r to each cell participating in the game this round.   
 	for i in EX:
 		r=1/(1.0+math.exp((EX[4][2]-i[2])/0.1))  
 		i.append(r) 
-	#print(EX)
 	counter=0 
 	for i in EX:
 		if (i[0]==dc1 and i[1]==dc2):
 			pass
 		else:
 			  counter+=i[3] 
-	
+	# Appending the propotion with respect to r of each cell participating in the game. 
 	for i in EX:
 		if (i[0]==dc1 and i[1]==dc2):
 			pass 
 		else:
 			i.append(i[3]/counter)
 	W=1
+	#Finding the probability that the cell's outside do not populate the center cell. 
 	for i in EX:
 		if (i[0]==dc1 and i[1]==dc2):
                         pass
@@ -190,7 +194,8 @@ def runsim(roundnum=10000,CHECK=False,
             	  #colourlst[dc1][dc2] += numpy.random.normal(0,mut_sd[2])
          	else:
          	   raise ValueError("unknown mutation type")
-        
+
+        # Storing the results in an array. 
         if x%rpt_freq==0:
             if result_type=="timeseries":
                 # compute summary statistics
