@@ -30,7 +30,16 @@
 	- also constructed a log file to keep a log of our progress. If you are reading this you are currently viewing the log file. 
  
 (2) Study the nose python lib. Come up with several ideas for test runs.
-	-  
+	- If mutation for strategey is turned off and everyone uses the same strategy in blind kin than nothing should change. 
+	- If using the same seed yields the same results 
+	- If payoff revieved each round for each individual is <= (R+S+T+P) 
+	- If mutation for colour is turned off than the colour should always be within the colour_init range 
+	- If mutation for strategy is turned off in blind kin selection than the a parameter should always be in a_init 
+	- Is the length of the "storage array" always equal to wxw? 
+	- Have blind kin selection, set everyone to have the same strategy, put mutation on A and see if the average changes. 
+	- Set A=0, B=1. Turn off B mutation and A mutation. Have colour constant at the beginning and test if average changes. 
+	- If we set all of the payoffs to zero R=S=P=T than each of the cells should have an equal probability in populating the dead cell. 
+	- If we set the game as blind kin selection and keep A constant with no mutation we should also see equal reproduction probabilities.  
 
 (3) Start to profile EvoAlt8.py.  
 	- Steps for installing kernprof (line_profiler) 
@@ -40,4 +49,4 @@
 		(d) A line by line profile is performed by typing : " /home/robert/.local/bin/kernprof -l -v profile8.py " 
 
 (4) Read  
-	- www.nature.com/nature   
+	- www.nature.com/nature  (notes in notebook)  
