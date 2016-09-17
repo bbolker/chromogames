@@ -48,5 +48,8 @@
 		(c) Step b created an executable: /home/robert/.local/bin/kernprof 
 		(d) A line by line profile is performed by typing : " /home/robert/.local/bin/kernprof -l -v profile8.py " 
 
-(4) Read  
-	- www.nature.com/nature  (notes in notebook)  
+(4) Read / comments 
+	- www.nature.com/nature  (notes in notebook) *found the online source 
+	- EvoAlt8 is the most up to date model. I added comments to it and reminded myself of the details of the model. It is a replicationg of the univie tutorial. Our next goal is to incorporate colour and the B parameter. 
+
+
