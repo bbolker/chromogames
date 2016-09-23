@@ -52,4 +52,11 @@
 	- www.nature.com/nature  (notes in notebook) *found the online source 
 	- EvoAlt8 is the most up to date model. I added comments to it and reminded myself of the details of the model. It is a replicationg of the univie tutorial. Our next goal is to incorporate colour and the B parameter. 
 
+/September 21 2014/ 
 
+Meeting time: 1.5 hours
+
+(1) Go over all of the articles that reference jansen and van baleen. We got them from web of science. (provide a rank of 1 for ones we should read and a rank of 4 for unimportant ones)  
+(2) Modify EvolAt so that the part which computes reproductive success probability is in a function. 
+(3) Use .npy file to assert that running the model with the same parameters yields the same results. (with nose) 
+(4) Update log to incorpate aprx. time for each task. 
