@@ -53,8 +53,49 @@ def PY(m,n,nsize,ntype,w,parAlst,R,S,T,P):
 					X.append([I1,I2])
 					count1+=1
 	Y=[m,n,py/count1]
-	#print(X)
 	return(Y) 
+
+def successful_mate(A,b,c):
+	win=[] 
+        for i in A:
+                r=1/(1.0+math.exp((A[4][2]-i[2])/0.1))
+                i.append(r)
+        counter=0
+        for i in A:
+                if (i[0]==b and i[1]==c):
+                        pass
+                else:
+                          counter+=i[3]
+        # Appending the propotion with respect to r of each cell participating in the game. 
+        for i in A:
+                if (i[0]==b and i[1]==c):
+                        pass
+                else:
+                        i.append(i[3]/counter)
+        W=1
+        #Finding the probability that the cell's outside do not populate the center cell. 
+        for i in A:
+                if (i[0]==b and i[1]==c):
+                        pass
+                else:
+                        W*=(1-i[3])
+        det5=float(numpy.random.uniform(0,1.0))
+        if det5 < W:
+                pass
+        else:
+                det6=float(numpy.random.uniform(0,1.0))
+                F=0
+                for i in A:
+                        if (i[0]==b and i[1]==c):
+                                pass
+                        else:
+                                if (F<det6<(F+i[4])):
+                                        win=[i[0],i[1]]
+                                else:
+                                        pass
+                                F+=i[4]
+	return(win)
+
 
 #A funtion that runs a game similar to that in the univie tutorial on spatial mixed strategies. 
 def runsim(roundnum=10000,CHECK=False,
@@ -136,50 +177,15 @@ def runsim(roundnum=10000,CHECK=False,
 						count2+=1 
 		EX.append([dc1,dc2,PX/count2])
 
-	# Appending the value of r to each cell participating in the game this round.   
-	for i in EX:
-		r=1/(1.0+math.exp((EX[4][2]-i[2])/0.1))  
-		i.append(r) 
-	counter=0 
-	for i in EX:
-		if (i[0]==dc1 and i[1]==dc2):
-			pass
-		else:
-			  counter+=i[3] 
-	# Appending the propotion with respect to r of each cell participating in the game. 
-	for i in EX:
-		if (i[0]==dc1 and i[1]==dc2):
-			pass 
-		else:
-			i.append(i[3]/counter)
-	W=1
-	#Finding the probability that the cell's outside do not populate the center cell. 
-	for i in EX:
-		if (i[0]==dc1 and i[1]==dc2):
-                        pass
-		else:
-			W*=(1-i[3])  
-	det5=float(numpy.random.uniform(0,1.0)) 
-	if det5 < W: 
-		pass 
+	B=successful_mate(EX,dc1,dc2)
+	if (len(B)!=0):
+		parAlst[dc1][dc2]=parAlst[B[0]][B[1]]
+        	parBlst[dc1][dc2]=parBlst[B[0]][B[1]]
+        	colourlst[dc1][dc2]=colourlst[B[0]][B[1]]
+        	Fitlst[dc1][dc2]=Fitlst[B[0]][B[1]]
 	else: 
-		det6=float(numpy.random.uniform(0,1.0)) 
-		F=0 
-		for i in EX:
-			if (i[0]==dc1 and i[1]==dc2):
-				pass
-			else:
-				if (F<det6<(F+i[4])):
-					parAlst[dc1][dc2]=parAlst[i[0]][i[1]] 
-					parBlst[dc1][dc2]=parBlst[i[0]][i[1]]
-					colourlst[dc1][dc2]=colourlst[i[0]][i[1]] 
-					Fitlst[dc1][dc2]=Fitlst[i[0]][i[1]]
-					#print(F,'<',det6,'<',(F+i[4]))
-				else: 
-					pass  				  
-				F+=i[4]
-		
-	#print(EX) 
+		pass
+
         ## save old values (for reporting only)
         y1=parAlst[dc1][dc2]
         y2=parBlst[dc1][dc2]
