@@ -61,8 +61,9 @@ Meeting time: 1.5 hours
 (2) Modify EvolAt so that the part which computes reproductive success probability is in a function. ~1hr
 	-we still need to run this simulation on collywobbles for a long period to replicate the converging values as before.
  
-(3) Use .npy file to assert that running the model with the same parameters yields the same results. (with nose) ~0.5hr
+(3) Use .npy file to assert that running the model with the same parameters yields the same results. (with nose) ~1hr
 	- figured out how to assert two arrays with numpy. Should we still use nose?
+	- http://stackoverflow.com/questions/10666163/how-to-check-if-all-elements-of-a-list-matches-a-condition 
  
 (4) Update log and incorpate aprx time for each task. ~0.5hr
 
