@@ -72,5 +72,21 @@ Meeting time: 1.5 hours
 	-organizing 
 	-getting pull to work
  
-(5) Discuss course outline with Bolker.   
-	
+(5) Discuss course outline with Bolker. 
+
+/September 28 2016/ 
+
+(1) 4P06 outline.    
+
+(2) Profile the updated EvoAlt.py 
+
+(3) Test assert with screen on collywobbles. 
+
+(4) Read number 17 of lit review (make notes). 
+
+(5) Start implementing the tests that we want to do to make sure that the basic version of the model is working the way we want. 
+	- try to get them working in nose. 
+
+/Oct 5 2016/ 
+
+(1) Talk about make. 	
