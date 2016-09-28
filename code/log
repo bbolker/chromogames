@@ -56,14 +56,20 @@
 
 Meeting time: 1.5 hours
 
-(1) Go over some of the articles that reference jansen and van baleen. We got them from web of science. (provide a rank of 1 for ones we should read and a rank of 4 for unimportant ones) ~ 1hr  
+(1) Go over some of the articles that reference jansen and van baleen. We got them from web of science. (provide a rank of 1 for ones we should read and a rank of 4 for unimportant ones) ~ 1.5hr
+  
 (2) Modify EvolAt so that the part which computes reproductive success probability is in a function. ~1hr
-	-we still need to run this simulation on collywobbles for a long period to replicate the converging values as before. 
-(3) Use .npy file to assert that running the model with the same parameters yields the same results. (with nose) ~1hr
-	- figured out how to assert two arrays with numpy. Should we still use nose? 
-(4) Update log to incorpate aprx. time for each task. ~0.5hr
+	-we still need to run this simulation on collywobbles for a long period to replicate the converging values as before.
+ 
+(3) Use .npy file to assert that running the model with the same parameters yields the same results. (with nose) ~0.5hr
+	- figured out how to assert two arrays with numpy. Should we still use nose?
+ 
+(4) Update log and incorpate aprx time for each task. ~0.5hr
 
-- Debugging and other ~1hr 
-	-Trying to get the runsim to work again. (had to specify a path at the top of runsim.py to read from ./models 
+(5) Debugging and other ~1hr 
+	-Trying to get the runsim to work again. (had to specify a path at the top of runsim.py to read from ./models) 
 	-organizing 
+	-getting pull to work
+ 
+(5) Discuss course outline with Bolker.   
 	
