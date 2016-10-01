@@ -6,7 +6,7 @@ import random,sys,time,math
 from random import randint
 import numpy
 
-## Testing if reproductive success for all competing cells is equal if R=P=S=T=0.  
+## Testing if there will be equal reproductive success between competing cells when all cells have the same probability to cooperate and mutation is off. 
 
 
 ## This is the logistic function. It will be used to calculate a cell's probability of cooperating.
@@ -217,9 +217,10 @@ def runsim(roundnum=10000,CHECK=False,
 	DET=float(numpy.random.uniform(0,1.0)) 
 	if DET < 0.01:
         	if mut_type=="add":
-            	   parAlst[dc1][dc2] += numpy.random.normal(0,mut_sd[0])
+            	  #parAlst[dc1][dc2] += numpy.random.normal(0,mut_sd[0])
             	  #parBlst[dc1][dc2] += numpy.random.normal(0,mut_sd[1])
             	  #colourlst[dc1][dc2] += numpy.random.normal(0,mut_sd[2])
+		   pass
          	else:
          	   raise ValueError("unknown mutation type")
 
@@ -246,12 +247,12 @@ def runsim(roundnum=10000,CHECK=False,
 rn=5000
 sd=[6,14,18,33]
 freq=1000
-TT=0
-SS=0
-PP=0
-RR=0
-al=-4.6
-au=-4.5
+TT=1
+SS=1
+PP=1
+RR=1
+al=1
+au=1
 bl=0
 bu=0
 m1=0.02
