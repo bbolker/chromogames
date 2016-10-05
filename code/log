@@ -77,22 +77,22 @@ Meeting time: 1.5 hours
 /September 28 2016/ 
 
 meeting time = 1.5hrs 
-log time = 
+log time = 0.25 hr 
 
-(1) 4P06 outline.    
+(1) 4P06 outline. ~0.25hr   
 	- Finalized sept 29. Check email for details. 
 
-(2) Profile the updated EvoAlt.py 
+(2) Profile the updated EvoAlt.py ~ 0.5hr 
 	- check the profiling directory. Profile8* refers to code used to profile EvoAlt8. EvoAltProf* are profiling files/code for the most updated model. 
 
-(3) Test assert with screen on collywobbles. 
+(3) Test assert with screen on collywobbles. ~ 0.5hr 
 	- ssh whitere@collywobbles 
 	- pwrd hint: L _ _ _ _ _ _ _ _ 3 
 
-(4) Read number 17 of lit review (make notes). 
+(4) Read number 17 of lit review (make notes). ~2hr
 	- rough notes done in book.  
 
-(5) Start implementing the tests that we want to do to make sure that the basic version of the model is working the way we want. 
+(5) Start implementing the tests that we want to do to make sure that the basic version of the model is working the way we want. ~1.5hr
 	- try to get them working in nose.
 	- was also inspired to make a "testingModels directory" to house code for testing the model (refer to sept 14 log) 
 
