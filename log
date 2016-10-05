@@ -93,9 +93,17 @@ log time = 0.25 hr
 	- rough notes done in book.  
 
 (5) Start implementing the tests that we want to do to make sure that the basic version of the model is working the way we want. ~1.5hr
-	- try to get them working in nose.
+	- try to get them working in nose. 
 	- was also inspired to make a "testingModels directory" to house code for testing the model (refer to sept 14 log) 
 
 /Oct 5 2016/ 
 
-(1) Talk about make. 	
+(1) Talk about make.   
+
+(2) Email Dr. Earn and ask for a copy of his evolutionary game theory text book (pdf). 
+
+(3) Clean up testing names. look into expit in scipy.special 
+
+(4) https://swcarpentry.github.io/make-novice/ 
+
+(5) Hamilton 197- "Selfish and Spiteful behaviour in an evolutionary model"  	
