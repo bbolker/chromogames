@@ -1,0 +1,2 @@
+the *test.py files contain python code that run tests on EvoAlt. The first comment in the code says what is being tested.  
+the *check.txt are the output of the previously mentioned checkes. A test fails if the last line of the check.txt file says 'failure'. Else the test was successful. 
