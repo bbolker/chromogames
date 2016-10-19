@@ -232,7 +232,7 @@ def runsim(roundnum=10000,CHECK=False,
 	for i in range(w): 
 		for j in range(w): 
 			if (0.0<=parAlst[i][j]<=1.0):
-				print(True,'A in intial range') 
+				print(True,'A in initial range') 
 			else:
 				print('failure') 
 				sys.exit()           
