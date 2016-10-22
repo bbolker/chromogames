@@ -15,7 +15,7 @@ equalReproductioncheck.txt : equalReproductiontest.py ../models/EvoAlt.py
 	@echo "Done"; 
 
 RSTPcheck.txt : RSTPtest.py ../models/EvoAlt.py 
-	@echo "Testing if the expected value of the payoff is reasonable (ie less than or equal to the 4 possible payoffs)" 
+	@echo "Testing if the expected value of the payoff is reasonable (ie less than or equal to the sum of the 4 possible payoffs)" 
 	python RSTPtest.py > RSTPcheck.txt; 
 	@echo "Done" 
 
