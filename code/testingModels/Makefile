@@ -37,9 +37,11 @@ assertcheck.txt : asserttest.py ../models/EvoAlt.py
 .PHONY : dats
 dats : Arangecheck.txt constantAzeromutcheck.txt equalReproductioncheck.txt RSTPcheck.txt storagecheck.txt zerocheck.txt assertcheck.txt
 
+all : *check.txt 
+
 # general rule?? 
-#%check.txt: %test.py ../models/EvoAlt.py
-#	python $*test.py > $*check.txt
+%check.txt: %test.py ../models/EvoAlt.py
+	python $*test.py > $*check.txt
 
 
 .PHONY : clean
