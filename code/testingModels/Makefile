@@ -14,9 +14,9 @@ equalReproductioncheck.txt : equalReproductiontest.py ../models/EvoAlt.py
 	python equalReproductiontest.py > equalReproductioncheck.txt; 
 	@echo "Done"; 
 
-RSTPcheck.txt : RSTPcheck.py ../models/EvoAlt.py 
+RSTPcheck.txt : RSTPtest.py ../models/EvoAlt.py 
 	@echo "Testing if the expected value of the payoff is reasonable (ie less than or equal to the 4 possible payoffs)" 
-	python RSTPcheck.py > RSTPcheck.txt; 
+	python RSTPtest.py > RSTPcheck.txt; 
 	@echo "Done" 
 
 storagecheck.txt : storagetest.py ../models/EvoAlt.py 
@@ -26,17 +26,23 @@ storagecheck.txt : storagetest.py ../models/EvoAlt.py
 
 zerocheck.txt : zeroGametest.py ../models/EvoAlt.py 
 	@echo "Testing if reproductive success for all competing cells is equal if R=P=S=T=0." 
-	python zeroGametest.py > zerocheck.txt ;
+	python zeroGametest.py > zerocheck.txt;
 	@echo "Done"  
-=======
 
-dats : *check.txt
+assertcheck.txt : asserttest.py ../models/EvoAlt.py  
+	@echo "Verifying that the npy file is the same as running the actual simulation" 
+	python asserttest.py > assertcheck.txt; 
+	@echo "Done"    
 
-## general rule??
-%check.txt: %test.py ../models/EvoAlt.py
-	python $*test.py > $*check.txt
+.PHONY : dats
+dats : Arangecheck.txt constantAzeromutcheck.txt equalReproductioncheck.txt RSTPcheck.txt storagecheck.txt zerocheck.txt assertcheck.txt
+
+# general rule?? 
+#%check.txt: %test.py ../models/EvoAlt.py
+#	python $*test.py > $*check.txt
+
 
 .PHONY : clean
 clean :
 	rm *check.txt
-        
+	rm *.npy  
