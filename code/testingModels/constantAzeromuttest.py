@@ -244,15 +244,16 @@ def runsim(roundnum=10000,CHECK=False,
     return(results)
 
 # Running a simulation so that is can be profiled. 
+
 rn=5000
 sd=[6,14,18,33]
 freq=1000
 TT=1
-SS=1
-PP=1
-RR=1
-al=1
-au=1
+SS=2
+PP=0
+RR=3
+al=0.0
+au=1.0
 bl=0
 bu=0
 m1=0.02
@@ -261,8 +262,7 @@ m3=0.02
 ns=1
 nntype='neu'
 mtp='add'
-ww=60
-
+ww=10
 
 def main():
         print('testing..... standby')

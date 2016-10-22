@@ -6,9 +6,6 @@ import random,sys,time,math
 from random import randint
 import numpy
 
-## Testing if all elements of parAlst are in [al,au] if mutation for A is turned off.   
-
-
 ## This is the logistic function. It will be used to calculate a cell's probability of cooperating.
 def logistic(x):
         return 1.0/(1.0+math.exp(-x))
@@ -241,25 +238,8 @@ def runsim(roundnum=10000,CHECK=False,
     return(results)
 
 # Running a simulation so that is can be profiled. 
-rn=5000
-sd=[6,14,18,33]
-freq=1000
-TT=1
-SS=2
-PP=0
-RR=3
-al=0.0
-au=1.0
-bl=0
-bu=0
-m1=0.02
-m2=0.02
-m3=0.02
-ns=1
-nntype='neu'
-mtp='add'
-ww=10
 
+from variables import * 
 
 def main():
         print('testing..... standby')
