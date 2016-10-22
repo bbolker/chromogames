@@ -1,5 +1,3 @@
-.PHONY : dats
-dats : Arangecheck.txt constantAzeromutcheck.txt equalReproductioncheck.txt RSTPcheck.txt storagecheck.txt zerocheck.txt
 
 Arangecheck.txt : Arangetest.py ../models/EvoAlt.py variables.py 
 	@echo "Testing if all elements of parAlst are in [al,au] if mutation for A is turned off.";
@@ -30,6 +28,13 @@ zerocheck.txt : zeroGametest.py ../models/EvoAlt.py
 	@echo "Testing if reproductive success for all competing cells is equal if R=P=S=T=0." 
 	python zeroGametest.py > zerocheck.txt ;
 	@echo "Done"  
+=======
+
+dats : *check.txt
+
+## general rule??
+%check.txt: %test.py ../models/EvoAlt.py
+	python $*test.py > $*check.txt
 
 .PHONY : clean
 clean :
