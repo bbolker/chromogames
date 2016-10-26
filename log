@@ -125,5 +125,5 @@ meeting time: 1hr
 
 (2) stderr output the test case information 
 
-
+(3) figure out how to tell make to run all *.py files. 
  
