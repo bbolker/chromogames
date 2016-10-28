@@ -1,5 +1,7 @@
-- `*test.py` files contain python code that run tests on `EvoAlt`. The first comment in the code says what is being tested.  
+- `*.py` files contain python code that run tests on `EvoAlt`. The first comment in the code says what is being tested.  
 - the `*check.txt` are the output of the previously mentioned tests. A test fails if the last line of the check.txt file says 'failure'. Else the test was successful. 
+- to run all tests type "make all <return>" 
+- to run an individual '*.py' test type "make *check.txt <return>". 
 
 ===== Tests =====
 
@@ -15,4 +17,4 @@
 
 6) storagetest : Testing if the number of cells remains constant. 
 
-7) zeroGametest : Testing if reproductive success for all competing cells is equal if R=P=S=T=0. 
+7) zeroGametest : Testing if reproductive success for all competing cells is equal if R=P=S=T=0.   
