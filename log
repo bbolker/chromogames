@@ -122,8 +122,14 @@ meeting time: 1hr
 /Oct 26 2016/ 
 
 (1) Clean up test python programs (remove the "test" from filename).  
+	- are the new names suitable. Is the readme detailed enough? 
 
 (2) stderr output the test case information 
 
 (3) figure out how to tell make to run all *.py files. 
- 
+	- is there a more effective way to achieve this? When i kept all : *check.txt it did not work.   
+
+(4) Read ch 3 of gametheory book. Take notes. 
+
+(5) Make simple notes on recombination. 
+	- our goal for next week was to start thinking about implementing recomination into our model. (also start thinking about test cases) 
