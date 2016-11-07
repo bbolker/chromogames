@@ -141,7 +141,7 @@ meeting time: 1hr
 (1) Go over chapter 3 in more detail. (attempt some pratice questions [question 1 (a couple of them) , and try exercise 3, do not do proofs) 
 
 (2) Go over older model and prepare to implement recombination.  
- 	- refer to diagram in notes 
+ 	- refer to diagram in notes (how will we implement recombination in haploid asexual reproduction..?) 
         - introduce a recombination frequency/probability
         - introduce a recombination function which takes as input deceased cell (center cell), successful mate and nsize 
               - successful mate swaps A,B, and/or colour with random neighbour (call A+, B+, C+). Do the cells permanently swap genes or does only the offspring get this combination??  
