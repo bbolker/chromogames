@@ -142,5 +142,16 @@ meeting time: 1hr
 
 (2) Go over older model and prepare to implement recombination.  
  	- refer to diagram in notes 
-
+        - introduce a recombination frequency/probability
+        - introduce a recombination function which takes as input deceased cell (center cell), successful mate and nsize 
+              - successful mate swaps A,B, and/or colour with random neighbour (call A+, B+, C+). Do the cells permanently swap genes or does only the offspring get this combination??  
+        
+          A        A+        -->         A+       A          -->   A+  (offspring) 
+          B        B+        -->         B        B+         -->   B      
+          C        C+        -->         C        C+         -->   C     
+           
+ or       A        A+        -->        A+        (offspring) 
+          B        B+        -->        B 
+          C        C+        -->        C  
+          
 
