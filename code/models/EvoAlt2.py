@@ -130,6 +130,8 @@ def runsim(roundnum=10000,CHECK=False,
 	   S=1,
 	   T=4,
 	   P=0,
+	   recomb=0,                ## Rate of recombination 
+           k=0.1,                   ## Selection parameter.
            init_type="random",
            b_range_init=(-4.0,4.0),
 	   ntype='mor',              ## mor = moore, neu=neuman
@@ -138,7 +140,7 @@ def runsim(roundnum=10000,CHECK=False,
            result_type="fullstate",  ## 'timeseries', 'endstate'
            rpt_freq=1000,
            mut_sd = (0.01,)*3,  ## std dev of mutation (A,B,colour)
-           mut_type = "add",   ## multiplicative ("mult") or additive ("add")
+           mut_type = "add",    ## multiplicative ("mult") or additive ("add")
            seed=None):
     """
     docstring should go here describing parameters
@@ -200,7 +202,6 @@ def runsim(roundnum=10000,CHECK=False,
 						EX.append(kd)
 						count2+=1 
 		EX.append([dc1,dc2,PX/count2])
-	k=0.1  # Selection parameter. FIX ME (add to runsim) !!!! 
 	B=successful_mate(EX,dc1,dc2,k)
 	if (len(B)!=0):
 		parAlst[dc1][dc2]=parAlst[B[0]][B[1]]
