@@ -1,6 +1,6 @@
 ## A function that creates an array of all 'neu' or 'mor' neighbours of a focal for an arbitrary nsize. 
 
-def findnei(m=10,n=10,ntype='neu',nsize=1,w=100): 
+def findnei(m,n,ntype,nsize,w): 
 	D1=range(m-nsize,m+1+nsize)
         D2=range(n-nsize,n+1+nsize) 
 	neighbours=[] 
@@ -20,7 +20,7 @@ def findnei(m=10,n=10,ntype='neu',nsize=1,w=100):
                                 I2=D2[j]%w                        		
 	 			neighbours.append([I1,I2])
 				
-	print(neighbours) 
+	#print(neighbours) 
 	return neighbours
 
-findnei() 
+ 
