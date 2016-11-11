@@ -130,7 +130,7 @@ def runsim(roundnum=10000,CHECK=False,
 	   S=1,
 	   T=4,
 	   P=0,
-	   recomb=0,                ## Rate of recombination 
+	   recomb_rate=0,                ## Rate of recombination 
            k=0.1,                   ## Selection parameter.
            init_type="random",
            b_range_init=(-4.0,4.0),
@@ -215,7 +215,28 @@ def runsim(roundnum=10000,CHECK=False,
         y1=parAlst[dc1][dc2]
         y2=parBlst[dc1][dc2]
         y3=colourlst[dc1][dc2]
-
+        
+        ## Recombination occurs. 
+          
+        recombination_mate_choices=findnei(dc1,dc2,ntype,nsize,w) 
+	choice=numpy.random.randint(0,len(recombination_mate_choices)) 
+	recombination_mate=recombination_mate_choices[choice] 
+        while (recombination_mate[0]==dc1 and recombination_mate[1]==dc2):
+		choice=numpy.random.randint(0,len(recombination_mate_choices))
+        	recombination_mate=recombination_mate_choices[choice]  
+		
+        prob1=float(numpy.random.uniform(0,1.0)) 
+	prob2=float(numpy.random.uniform(0,1.0))
+	prob3=float(numpy.random.uniform(0,1.0))   
+         
+        if prob1 < (recomb_rate/2): 
+		parAlst[dc1][dc2]=parAlst[recombination_mate[0]][recombination_mate[1]] 
+	if prob2 < (recomb_rate/2): 
+		parBlst[dc1][dc2]=parBlst[recombination_mate[0]][recombination_mate[1]] 
+	if prob3 < (recomb_rate/2): 
+		parClst[dc1][dc2]=parClst[recombination_mate[0]][recombination_mate[1]]
+          
+          
         #Mutation occurs each round.
 	DET=float(numpy.random.uniform(0,1.0)) 
 	if DET < 0.01:
