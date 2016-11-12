@@ -55,10 +55,10 @@ def PY(m,n,nsize,ntype,w,parAlst,R,S,T,P):
 	Y=[m,n,py/count1]
 	return(Y) 
 
-def successful_mate(A,b,c):
+def successful_mate(A,b,c,k):  
 	win=[] 
         for i in A:
-                r=1/(1.0+math.exp((A[4][2]-i[2])/0.1))
+                r=1/(1.0+math.exp((A[4][2]-i[2])/k))
                 i.append(r)
         counter=0
         for i in A:
@@ -176,13 +176,13 @@ def runsim(roundnum=10000,CHECK=False,
 						EX.append(kd)
 						count2+=1 
 		EX.append([dc1,dc2,PX/count2])
-
-	B=successful_mate(EX,dc1,dc2)
+	k=0.1  # Selection parameter. FIX ME (add to runsim) !!!! 
+	B=successful_mate(EX,dc1,dc2,k)
 	if (len(B)!=0):
 		parAlst[dc1][dc2]=parAlst[B[0]][B[1]]
         	parBlst[dc1][dc2]=parBlst[B[0]][B[1]]
         	colourlst[dc1][dc2]=colourlst[B[0]][B[1]]
-        	Fitlst[dc1][dc2]=Fitlst[B[0]][B[1]]
+        	Fitlst[dc1][dc2]=Fitlst[B[0]][B[1]] 
 	else: 
 		pass
 

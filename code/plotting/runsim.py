@@ -1,5 +1,5 @@
 import sys
-sys.path.insert(0, './../models/')
+sys.path.insert(0, './../models/')  # safer to do sys.path.append instead of insert.  
 import EvoAlt
 import numpy as np
 import importlib 

@@ -6,7 +6,8 @@ all : Arangecheck.txt constantAzeromutcheck.txt equalReproductioncheck.txt RSTPc
 
 .PHONY : gits 
 gits : 
-	git add *
+	git add *.py ; git add *check.txt 
+	git commit -m "updating tests"
 
 .PHONY : clean
 clean :
