@@ -1,3 +1,4 @@
+import numpy
 def findnei2(m,n,ntype,nsize,w):
         D1=range(m-nsize,m+1+nsize)
         D2=range(n-nsize,n+1+nsize)
