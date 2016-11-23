@@ -234,20 +234,24 @@ def runsim(roundnum=10000,CHECK=False,
         
         ## Recombination occurs. 
           
-        recombination_mate_choices=findnei(dc1,dc2,ntype,nsize,w) 
-	choice=numpy.random.randint(0,len(recombination_mate_choices)) 
-	recombination_mate=recombination_mate_choices[choice] 
-        while (recombination_mate[0]==dc1 and recombination_mate[1]==dc2):
-		choice=numpy.random.randint(0,len(recombination_mate_choices))
-        	recombination_mate=recombination_mate_choices[choice]  
+        #recombination_mate_choices=findnei(dc1,dc2,ntype,nsize,w) 
+	#choice=numpy.random.randint(0,len(recombination_mate_choices)) 
+	#recombination_mate=recombination_mate_choices[choice] 
+        #while (recombination_mate[0]==dc1 and recombination_mate[1]==dc2):
+	#	choice=numpy.random.randint(0,len(recombination_mate_choices))
+        #	recombination_mate=recombination_mate_choices[choice]  
 	
-	print('This is the center cell')           
-	print(dc1,dc2)                             
-	print('These are the mate choices')        
-	print(recombination_mate_choices)               
-	print('This was the chosen mate')          
-	print(choice)                              
-			
+	#print('This is the center cell')           
+	#print(dc1,dc2)                             
+	#print('These are the mate choices')        
+	#print(recombination_mate_choices)               
+	#print('This was the chosen mate')          
+	#print(choice)                              
+	
+        recombination_mate=findnei2(dc1,dc2,ntype,nsize,w) 
+        while (recombination_mate[0]==dc1 and recombination_mate[1]==dc2): 
+        	recombination_mate=findnei2(dc1,dc2,ntype,nsize,w)
+        		
         prob1=float(numpy.random.uniform(0,1.0)) 
 	prob2=float(numpy.random.uniform(0,1.0))
 	prob3=float(numpy.random.uniform(0,1.0))   
