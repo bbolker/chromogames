@@ -182,4 +182,14 @@ meeting time: 1hr
 
 (4) Skype on Saturday. 
 
-(5) run simulation with graphs. (smaller lattice, run less time) 
+(5) run simulation with graphs. (smaller lattice, run less time)  
+
+/Nov 26 2016/ 
+
+(1) Sketch a rough copy of code to find mixed ESS for arbitrary 2x2 game. 
+
+(2) Fix the tests (up until the last couple) so that they do not require hooks. 
+
+(3) rename EvoAlt and fix readmes. Be consisten with fucntion cases. 
+
+(4) Start talking about midterm report. 
