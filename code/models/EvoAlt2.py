@@ -247,10 +247,11 @@ def runsim(roundnum=10000,CHECK=False,
 	#print(recombination_mate_choices)               
 	#print('This was the chosen mate')          
 	#print(choice)                              
-	
-        recombination_mate=findnei2(dc1,dc2,ntype,nsize,w) 
-        while (recombination_mate[0]==dc1 and recombination_mate[1]==dc2): 
-        	recombination_mate=findnei2(dc1,dc2,ntype,nsize,w)
+
+    while (True):
+        recombination_mate=findnei2(dc1,dc2,ntype,nsize,w)
+        if (recombination_mate[0]!=dc1 or recombination_mate[1]!=dc2):
+            break
         		
         prob1=float(numpy.random.uniform(0,1.0)) 
 	prob2=float(numpy.random.uniform(0,1.0))
