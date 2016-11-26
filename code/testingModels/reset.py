@@ -20,15 +20,15 @@ def f(x, y):               ## Valid
 def h(x,z=1) :            ## This is allowed
 	print(x) 
 
-def k(x,z='NaN'):
-	if z=='NaN':
+def k(x,z=None):
+	if (z==None):
 		z=x
 	print(x,z) 
 
 
 f(1,1) 
 g()
-h(2,) 
+h()   
 k(2,)   
 
 
