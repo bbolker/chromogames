@@ -191,5 +191,6 @@ meeting time: 1hr
 (2) Fix the tests (up until the last couple) so that they do not require hooks. 
 
 (3) rename EvoAlt and fix readmes. Be consisten with fucntion cases. 
+	- also our code only does neu neighbourhood... 
 
 (4) Start talking about midterm report. 
