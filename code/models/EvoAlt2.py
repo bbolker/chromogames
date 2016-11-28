@@ -97,7 +97,7 @@ def successful_mate(A,b,c,k):
 	return(win)
 ## A function that creates an array of all 'neu' or 'mor' neighbours of a focal for an arbitrary nsize. 
 
-def findnei(m,n,ntype,nsize,w):        
+def find_nei(m,n,ntype,nsize,w):        
         D1=range(m-nsize,m+1+nsize)
         D2=range(n-nsize,n+1+nsize) 
         neighbours=[] 
@@ -120,8 +120,8 @@ def findnei(m,n,ntype,nsize,w):
         #print(neighbours) 
         return neighbours
 
-## New findnei2. Returns only one neighbour in neighbourhood. 
-def findnei2(m,n,ntype,nsize,w): 
+## New find_nei2. Returns only one neighbour in neighbourhood. 
+def find_nei2(m,n,ntype,nsize,w): 
         D1=range(m-nsize,m+1+nsize)
         D2=range(n-nsize,n+1+nsize)
 	if ntype=='mor': 
@@ -231,10 +231,9 @@ def runsim(roundnum=10000,CHECK=False,
         y1=parAlst[dc1][dc2]
         y2=parBlst[dc1][dc2]
         y3=colourlst[dc1][dc2]
-        
         ## Recombination occurs. 
           
-        #recombination_mate_choices=findnei(dc1,dc2,ntype,nsize,w) 
+        #recombination_mate_choices=find_nei(dc1,dc2,ntype,nsize,w) 
 	#choice=numpy.random.randint(0,len(recombination_mate_choices)) 
 	#recombination_mate=recombination_mate_choices[choice] 
         #while (recombination_mate[0]==dc1 and recombination_mate[1]==dc2):
@@ -247,11 +246,11 @@ def runsim(roundnum=10000,CHECK=False,
 	#print(recombination_mate_choices)               
 	#print('This was the chosen mate')          
 	#print(choice)                              
-
-    while (True):
-        recombination_mate=findnei2(dc1,dc2,ntype,nsize,w)
-        if (recombination_mate[0]!=dc1 or recombination_mate[1]!=dc2):
-            break
+        check=True
+        while (check==True):
+              recombination_mate=find_nei2(dc1,dc2,ntype,nsize,w)
+              if (recombination_mate[0]!=dc1 or recombination_mate[1]!=dc2):
+                    check=False 
         		
         prob1=float(numpy.random.uniform(0,1.0)) 
 	prob2=float(numpy.random.uniform(0,1.0))
