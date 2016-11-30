@@ -25,7 +25,7 @@ nntype='neu'
 mtp='add'
 ww=60
 
-y = EvoAlt.runsim(a_range_init=(al,au),w=ww,R=RR,P=PP,T=TT,S=SS,roundnum=rn,seed=sd[0],rpt_freq=freq,CHECK=False,result_type='timeseries',mut_sd=(m1,m2,m3),ntype=nntype,mut_type=mtp,nsize=2,switch='off') 
+y = EvoAlt2.runsim(a_range_init=(al,au),w=ww,R=RR,P=PP,T=TT,S=SS,roundnum=rn,seed=sd[0],rpt_freq=freq,CHECK=False,result_type='timeseries',mut_sd=(m1,m2,m3),ntype=nntype,mut_type=mtp,nsize=2,switch='off') 
 np.save('assertcheck.npy',y) 
 z=np.load('assertcheck.npy')  
 

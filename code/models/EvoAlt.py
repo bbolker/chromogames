@@ -95,7 +95,47 @@ def successful_mate(A,b,c,k):
                                         pass
                                 F+=i[4]
 	return(win)
+## A function that creates an array of all 'neu' or 'mor' neighbours of a focal for an arbitrary nsize. 
 
+def find_nei(m,n,ntype,nsize,w):        
+        D1=range(m-nsize,m+1+nsize)
+        D2=range(n-nsize,n+1+nsize) 
+        neighbours=[] 
+        if ntype=='neu': 
+                for i in range(len(D1)):
+                        v=len(D1)/2
+                        d=abs(i-v) 
+                        for j in range(d,len(D1)-d):
+                                I1=D1[i]%w
+                                I2=D2[j]%w 
+                                neighbours.append([I1,I2])      
+        
+        if ntype=='mor': 
+                for i in range(len(D1)):
+                        for j in range(len(D2)): 
+                                I1=D1[i]%w
+                                I2=D2[j]%w                                      
+                                neighbours.append([I1,I2])
+                                
+        #print(neighbours) 
+        return neighbours
+
+## New find_nei2. Returns only one neighbour in neighbourhood. 
+def find_nei2(m,n,ntype,nsize,w): 
+        D1=range(m-nsize,m+1+nsize)
+        D2=range(n-nsize,n+1+nsize)
+	if ntype=='mor': 
+               u1=numpy.random.randint(m-nsize,m+1+nsize) 
+               u2=numpy.random.randint(n-nsize,n+1+nsize) 
+        if ntype=='neu': 
+	       u1=numpy.random.randint(m-nsize,m+1+nsize) 
+               v=len(D1)/2 
+               i=D1.index(u1) 
+               d=abs(i-v)
+               j=numpy.random.randint(d,len(D1)-d) 
+               u2=D2[j]  
+        return([u1,u2])       
+		
 
 #A funtion that runs a game similar to that in the univie tutorial on spatial mixed strategies. 
 def runsim(roundnum=10000,CHECK=False,
@@ -106,6 +146,8 @@ def runsim(roundnum=10000,CHECK=False,
 	   S=1,
 	   T=4,
 	   P=0,
+	   recomb_rate=0,                ## Rate of recombination 
+           k=0.1,                   ## Selection parameter.
            init_type="random",
            b_range_init=(-4.0,4.0),
 	   ntype='mor',              ## mor = moore, neu=neuman
@@ -114,7 +156,7 @@ def runsim(roundnum=10000,CHECK=False,
            result_type="fullstate",  ## 'timeseries', 'endstate'
            rpt_freq=1000,
            mut_sd = (0.01,)*3,  ## std dev of mutation (A,B,colour)
-           mut_type = "add",   ## multiplicative ("mult") or additive ("add")
+           mut_type = "add",    ## multiplicative ("mult") or additive ("add")
            seed=None):
     """
     docstring should go here describing parameters
@@ -176,7 +218,6 @@ def runsim(roundnum=10000,CHECK=False,
 						EX.append(kd)
 						count2+=1 
 		EX.append([dc1,dc2,PX/count2])
-	k=0.1  # Selection parameter. FIX ME (add to runsim) !!!! 
 	B=successful_mate(EX,dc1,dc2,k)
 	if (len(B)!=0):
 		parAlst[dc1][dc2]=parAlst[B[0]][B[1]]
@@ -190,7 +231,39 @@ def runsim(roundnum=10000,CHECK=False,
         y1=parAlst[dc1][dc2]
         y2=parBlst[dc1][dc2]
         y3=colourlst[dc1][dc2]
-
+        ## Recombination occurs. 
+          
+        #recombination_mate_choices=find_nei(dc1,dc2,ntype,nsize,w) 
+	#choice=numpy.random.randint(0,len(recombination_mate_choices)) 
+	#recombination_mate=recombination_mate_choices[choice] 
+        #while (recombination_mate[0]==dc1 and recombination_mate[1]==dc2):
+	#	choice=numpy.random.randint(0,len(recombination_mate_choices))
+        #	recombination_mate=recombination_mate_choices[choice]  
+	
+	#print('This is the center cell')           
+	#print(dc1,dc2)                             
+	#print('These are the mate choices')        
+	#print(recombination_mate_choices)               
+	#print('This was the chosen mate')          
+	#print(choice)                              
+        check=True
+        while (check==True):
+              recombination_mate=find_nei2(dc1,dc2,ntype,nsize,w)
+              if (recombination_mate[0]!=dc1 or recombination_mate[1]!=dc2):
+                    check=False 
+        		
+        prob1=float(numpy.random.uniform(0,1.0)) 
+	prob2=float(numpy.random.uniform(0,1.0))
+	prob3=float(numpy.random.uniform(0,1.0))   
+         
+        if prob1 < (recomb_rate/2): 
+		parAlst[dc1][dc2]=parAlst[recombination_mate[0]][recombination_mate[1]] 
+	if prob2 < (recomb_rate/2): 
+		parBlst[dc1][dc2]=parBlst[recombination_mate[0]][recombination_mate[1]] 
+	if prob3 < (recomb_rate/2): 
+		parClst[dc1][dc2]=parClst[recombination_mate[0]][recombination_mate[1]]
+          
+          
         #Mutation occurs each round.
 	DET=float(numpy.random.uniform(0,1.0)) 
 	if DET < 0.01:
