@@ -1,7 +1,7 @@
 import sys
 sys.path.insert(0, '../models/')
 import numpy
-import EvoAlt2
+import EvoAlt
 
 rn=2000
 sd=[6,14,18,33]

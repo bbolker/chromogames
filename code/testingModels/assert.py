@@ -1,9 +1,9 @@
 import sys
 sys.path.insert(0, './../models/')
-import EvoAlt2
+import EvoAlt
 import numpy as np
 import importlib
-reload(EvoAlt2)
+reload(EvoAlt)
 
 sys.stderr.write("Verifying that the npy file is the same as running the actual simulation\n")
 rn=10000

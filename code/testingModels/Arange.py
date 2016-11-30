@@ -1,19 +1,7 @@
-#	for i in range(w): 
-#		for j in range(w): 
-#			if (0.0<=parAlst[i][j]<=1.0):
-#				print(True,'A in initial range') 
-#			else:
-#				print('failure') 
-#				sys.exit()           
-#       x+=1
-#    
-#    return(results)
-
-# Running a simulation so that is can be profiled. 
 import sys
 sys.path.insert(0, '../models/') 
 
-import EvoAlt2
+import EvoAlt
 
 rn=5000
 sd=[6,14,18,33]
