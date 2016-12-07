@@ -190,7 +190,28 @@ meeting time: 1hr
 
 (2) Fix the tests (up until the last couple) so that they do not require hooks. 
 
-(3) rename EvoAlt and fix readmes. Be consisten with fucntion cases. 
+(3) rename EvoAlt and fix readmes. Be consistent with fucntion cases. 
 	- also our code only does neu neighbourhood... 
 
-(4) Start talking about midterm report. 
+(4) Start talking about midterm report.  
+
+/Nov 30 2016/ 
+
+(1) Run TODO.md tests in ~/github/chromogames. 
+
+(2) Topics in Game Theory. 
+	- recombination 
+ 	- game thoery (conceptual stuff) 
+	- reference bacteria paper, Nowak .. 
+	- 5 pages written. (not double spaced) 
+	- vision: idea from game theory that we are nice to our neighbours and that we form groups and possibly spiteful to individuals from other groups. (may eventually expand our strategy space). Decide how big to make the group? How does niceness drop off with distance (b,d) . Have paper lead into this. 
+        
+/Dec 7 2016/   
+
+(1) Talk about SSH problems 
+(2) Difference between synch and asynch. Also refer back to unive lab and java applet. 
+(3) Propose rough analysis of "cheating model" 
+(4) Show midterm report. 
+
+
+ 
