@@ -86,7 +86,7 @@ log time = 0.25 hr
 	- check the profiling directory. Profile8* refers to code used to profile EvoAlt8. EvoAltProf* are profiling files/code for the most updated model. 
 
 (3) Test assert with screen on collywobbles. ~ 0.5hr 
-	- ssh whitere@collywobbles 
+	- ssh whitere@collywobbles.math.mcmaster.ca 
 	- pwrd hint: L _ _ _ _ _ _ _ _ 3 
 
 (4) Read number 17 of lit review (make notes). ~2hr
@@ -210,8 +210,16 @@ meeting time: 1hr
 
 (1) Talk about SSH problems 
 (2) Difference between synch and asynch. Also refer back to unive lab and java applet. 
+	- synchronous vs asynchronous is only relevant in spatial case. 
+	- 
 (3) Propose rough analysis of "cheating model" 
 (4) Show midterm report. 
 (5) http://www.socsci.uci.edu/~jstern/uci_vpn_ubuntu/     ~ using vpn 
+
+For testing model.. (decreasing computational cost)
+
+(1a) Cython for converting python code to C code.  
+(1b) Replicate the 45% equilibrium run with EvoAlt (new). 
+(1c) Try neighbourhood size of 10 with 70x70 and see if equilibrium goes to 0.3.
 
  
