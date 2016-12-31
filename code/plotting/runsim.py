@@ -7,11 +7,11 @@ reload(EvoAlt)
 
 outfiletest1 = open('test.npy','w')
 
-rn=100000
+rn=250000000
 sd=[6,14,18,33] 
 freq=1000
-TT=1.1
-SS=-0.1
+TT=1.7
+SS=0.3
 PP=0
 RR=1
 al=-4.6
@@ -26,13 +26,13 @@ nntype='neu'
 mtp='add'
 ww=60
 
-x = EvoAlt.runsim(a_range_init=(al,au),w=ww,R=RR,P=PP,T=TT,S=SS,roundnum=rn,seed=sd[0],rpt_freq=freq,CHECK=False,result_type='timeseries',mut_sd=(m1,m2,m3),ntype=nntype,mut_type=mtp,nsize=2,switch='off')
+x = EvoAlt.runsim(a_range_init=(al,au),w=ww,R=RR,P=PP,T=TT,S=SS,roundnum=rn,seed=sd[0],rpt_freq=freq,CHECK=False,result_type='timeseries',mut_sd=(m1,m2,m3),ntype=nntype,mut_type=mtp,nsize=1,switch='off')
 
 np.save(outfiletest1,x) 
 
 import matplotlib.pyplot as plt
  
-plt.title('PD R=1 S=-0.1 T=1.1 P=0 spatial switch=off w=60 mut=1% mutstd=0.02+')
+plt.title('SD test2 w=60 mut=1% mutstd=0.02+')
 plt.plot(x[:,0],label='mean A(2)', color='blue')
 #plt.plot(x[:,1],label='mean B', color='red')
 #plt.plot(x[:,2],label='mean colour',color='black')

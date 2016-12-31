@@ -7,6 +7,9 @@ import numpy as np
 import importlib
 reload(EvoAlt) 
 
+from datetime import datetime
+startTime = datetime.now() 
+
 rn=200000000
 sd=3
 freq=1000
@@ -25,6 +28,10 @@ ns=1
 nntype='neu'
 mtp='add'
 ww=70
+
+x = EvoAlt.runsim(a_range_init=(al,au),w=ww,R=RR,P=PP,T=TT,S=SS,roundnum=rn,seed=sd,rpt_freq=freq,CHECK=False,result_type='timeseries',mut_sd=(m1,m2,m3),ntype=nntype,mut_type=mtp,nsize=ns,switch='off')  
+
+print(datetime.now() - startTime) 
 
 
 
