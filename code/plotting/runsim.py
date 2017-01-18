@@ -7,7 +7,7 @@ reload(EvoAlt)
 
 outfiletest1 = open('test.npy','w')
 
-rn=50000000
+rn=70000000
 sd=[6,14,18,33] 
 freq=1000
 TT=1.7
@@ -30,21 +30,21 @@ x = EvoAlt.runsim(a_range_init=(al,au),w=ww,R=RR,P=PP,T=TT,S=SS,roundnum=rn,seed
 
 np.save(outfiletest1,x) 
 
-import matplotlib.pyplot as plt
+#import matplotlib.pyplot as plt
  
-plt.title('SDagain nsize=1 test2 w=60 mut=1% mutstd=0.02+')
-plt.plot(x[:,0],label='mean A(2)', color='blue')
+#plt.title('SDagain nsize=1 test2 w=60 mut=1% mutstd=0.02+')
+#plt.plot(x[:,0],label='mean A(2)', color='blue')
 #plt.plot(x[:,1],label='mean B', color='red')
 #plt.plot(x[:,2],label='mean colour',color='black')
 #plt.plot(x[:,3],label='mean fitness',color='green')
-plt.plot(x[:,4],label='std A(2)',color='yellow')
+#plt.plot(x[:,4],label='std A(2)',color='yellow')
 #plt.plot(x[:,5],label='std B',color='cyan')
 #plt.plot(x[:,6],label='std Colour',color='orange')
 #plt.plot(x[:,7],label='std fitness',color='magenta')
 
 
-plt.legend(bbox_to_anchor=(-0.03,0.5),prop={'size':11})
-plt.ylim([-8,8]) 
-plt.xlabel('round number (fqt=1000)') 
-plt.show() 
+#plt.legend(bbox_to_anchor=(-0.03,0.5),prop={'size':11})
+#plt.ylim([-8,8]) 
+#plt.xlabel('round number (fqt=1000)') 
+#plt.show() 
 
