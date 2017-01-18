@@ -222,4 +222,22 @@ For testing model.. (decreasing computational cost)
 (1b) Replicate the 45% equilibrium run with EvoAlt (new). 
 (1c) Try neighbourhood size of 10 with 70x70 and see if equilibrium goes to 0.3.
 
+
+/Jan 18 2017/ 
+
+(1) The results (thus far) are as expected. It takes a long time to get the data. Box plots may be postoned.. 
+	- can I run more than three runs at a time? 
+	- python -u (is this flushing?)  
+	- how do i get npy scripts without using git push in collywobbles. 
+
+(2) Game theory textbook 
+ 	- I started to read the continuous games chapter (it is not complete) 
+	- Maybe it would be a good idea to read the "games with relatives" chapter 
+
+(3) Refer to notebook. 
+	- game theory notes 
+	- ideas for colour runs 
+		- can we discuss what would be good ways to plot/ represent all of the colour runs 
+
+
  
