@@ -250,3 +250,11 @@ For testing model.. (decreasing computational cost)
 - Check status of data needed for box plots 
 
 - ideas for colour runs 
+
+/Feb 1 2017/ 
+
+-The time series "slices" are correctly labeled.The issue is that the mean B is not actually zero (refer to runsim*, there is no b_range_init). This is not a problem as when the probability is calculated in the model we do not use B at all. 
+-Discuss ideas for colour runs. 
+-box plot data will be ready ... eventually 
+-re-read the chapter of continuous strategies  
+ 
