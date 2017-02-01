@@ -229,7 +229,7 @@ For testing model.. (decreasing computational cost)
 	- can I run more than three runs at a time? 
 	- python -u (is this flushing?)  
 	- how do i get npy scripts without using git push in collywobbles. 
-
+	
 (2) Game theory textbook 
  	- I started to read the continuous games chapter (it is not complete) 
 	- Maybe it would be a good idea to read the "games with relatives" chapter 
@@ -239,5 +239,22 @@ For testing model.. (decreasing computational cost)
 	- ideas for colour runs 
 		- can we discuss what would be good ways to plot/ represent all of the colour runs 
 
+(4) RcppCNPy = libary in R to import npy files 
 
+
+/Jan 25 2017/ 
+
+- Practice problem from textbook 
+	- Talk about meaning of CSS 
+
+- Check status of data needed for box plots 
+
+- ideas for colour runs 
+
+/Feb 1 2017/ 
+
+-The time series "slices" are correctly labeled.The issue is that the mean B is not actually zero (refer to runsim*, there is no b_range_init). This is not a problem as when the probability is calculated in the model we do not use B at all. 
+-Discuss ideas for colour runs. 
+-box plot data will be ready ... eventually 
+-re-read the chapter of continuous strategies  
  
