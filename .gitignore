@@ -4,3 +4,4 @@
 *.aux
 *.log
 code/testingModels/*.txt  ## testing output
+.Rhistory
