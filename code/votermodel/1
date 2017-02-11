@@ -1,0 +1,38 @@
+
+import random,sys,time,math
+from random import randint
+import numpy
+
+def find_nei(m,n,ntype,nsize,w):
+        D1=range(m-nsize,m+1+nsize)
+        D2=range(n-nsize,n+1+nsize)
+        neighbours=[]
+        if ntype=='neu':
+                for i in range(len(D1)):
+                        v=len(D1)/2
+                        d=abs(i-v)
+                        for j in range(d,len(D1)-d):
+                                I1=D1[i]%w
+                                I2=D2[j]%w
+                                neighbours.append([I1,I2])
+
+        if ntype=='mor':
+                for i in range(len(D1)):
+                        for j in range(len(D2)):
+                                I1=D1[i]%w
+                                I2=D2[j]%w
+                                neighbours.append([I1,I2])
+
+        #print(neighbours) 
+        return neighbours
+
+
+def runvoter( 
+              roundnum=1000000,
+              w=100, 
+              n_rpt=100,
+             ):   
+        results = numpy.zeros((n_rpt,3,w,w)),
+        votelst = numpy.random.int(a_range_init[0],a_range_init[1],size=(w,w)) 
+	print("Hello") 
+
