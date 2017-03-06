@@ -12,8 +12,8 @@ def logistic(x):
         return 1.0/(1.0+math.exp(-x))
 
 def init_sim_random(a_range_init,b_range_init,colour_init,w):
-    
-    ## The three parameters a,b and colour are given to each cell in the 100x100 lattice.
+## The three parameters a,b and colour are given to each cell in the 100x100 lattice. 
+
     if a_range_init[0]==0 and a_range_init[1]==0:
         parAlst = numpy.zeros((w,w))
     else:
@@ -29,7 +29,8 @@ def init_sim_random(a_range_init,b_range_init,colour_init,w):
     return(parAlst,parBlst,colourlst)
 
 #A function that returns an array with three elements. The first two elements are the position of the agent/organism in the lattice. The third element is the (m,n)'s average payoff with its neuman neighbourhood of size "nsize". 
-def PY(m,n,nsize,ntype,w,parAlst,R,S,T,P,parBlst,colourlst):
+ 
+def PY(m,n,nsize,ntype,w,parAlst,R,S,T,P):
 	
 	D1=range(m-nsize,m+1+nsize)
         D2=range(n-nsize,n+1+nsize)
@@ -43,8 +44,8 @@ def PY(m,n,nsize,ntype,w,parAlst,R,S,T,P,parBlst,colourlst):
                         for j in range(d,len(D1)-d):
                                 I1=D1[i]%w
                                 I2=D2[j]%w
-                                coop_ctr = logistic(parAlst[m][n]+parBlst[m][n]*abs(colourlst[m][n]-colourlst[I1][I2]))
-				coop_nbr = logistic(parAlst[I1][I2]+parBlst[I1][I2]*abs(colourlst[m][n]-colourlst[I1][I2]))
+                                coop_ctr = logistic(parAlst[m][n])
+				coop_nbr = logistic(parAlst[I1][I2])
                                 t_ctr=coop_ctr*coop_nbr*R + coop_ctr*(1-coop_nbr)*S + (1-coop_ctr)*coop_nbr*T + (1-coop_ctr)*(1-coop_nbr)*P
                                 if (m==I1 and n==I2):
                                         pass
@@ -177,7 +178,7 @@ def runsim(roundnum=10000,CHECK=False,
         numpy.random.seed(seed)
     
     ## The list Fitlst is made into an appropriate-sized grid.
-    Fitlst = numpy.zeros((w,w))
+    Fitlst = numpy.ones((w,w))
 
     if (init_type=="random"):
         parAlst,parBlst,colourlst = init_sim_random(a_range_init,b_range_init,colour_init,w)
@@ -200,21 +201,21 @@ def runsim(roundnum=10000,CHECK=False,
 	if ntype=='neu':
 		count2=0
 		PX=0
-		for i in range(len(D1)):
-			v=len(D1)/2
+		for i in range(len(D1)): 
+			v=len(D1)/2 
                         d=abs(i-v) 
 			for j in range(d,len(D1)-d):
 				Z1=D1[i]%w
 				Z2=D2[j]%w
 				if switch=='off':
-                                        coop_ctr = logistic(parAlst[dc1][dc2]+parBlst[dc1][dc2]*abs(colourlst[dc1][dc2]-colourlst[Z1][Z2]))
-                                        coop_nbr = logistic(parAlst[Z1][Z2]+parBlst[Z1][Z2]*abs(colourlst[dc1][dc2]-colourlst[Z1][Z2]))
+                                        coop_ctr = logistic(parAlst[dc1][dc2])
+                                        coop_nbr = logistic(parAlst[Z1][Z2])
 					t_ctr=coop_ctr*coop_nbr*R + coop_ctr*(1-coop_nbr)*S + (1-coop_ctr)*coop_nbr*T + (1-coop_ctr)*(1-coop_nbr)*P 
 					if (dc1==Z1 and dc2==Z2):
 						pass
 					else:
 						PX+=t_ctr
-						kd=PY(Z1,Z2,nsize,ntype,w,parAlst,R,S,T,P,parBlst,colourlst) 
+						kd=PY(Z1,Z2,nsize,ntype,w,parAlst,R,S,T,P) 
 						EX.append(kd)
 						count2+=1 
 		EX.append([dc1,dc2,PX/count2])
@@ -252,14 +253,14 @@ def runsim(roundnum=10000,CHECK=False,
           
           
         #Mutation occurs each round.
-	DET=float(numpy.random.uniform(0,1.0)) 
-	if DET < 0.01:
-        	if mut_type=="add":
-            	   parAlst[dc1][dc2] += numpy.random.normal(0,mut_sd[0])
-            	   parBlst[dc1][dc2] += numpy.random.normal(0,mut_sd[1])
-            	   colourlst[dc1][dc2] += numpy.random.normal(0,mut_sd[2])
-         	else:
-         	   raise ValueError("unknown mutation type")
+	#DET=float(numpy.random.uniform(0,1.0)) 
+	#if DET < 0.01:
+        #	if mut_type=="add":
+        #parAlst[dc1][dc2] += numpy.random.normal(0,mut_sd[0])
+            	  #parBlst[dc1][dc2] += numpy.random.normal(0,mut_sd[1])
+            	  #colourlst[dc1][dc2] += numpy.random.normal(0,mut_sd[2])
+        # 	else:
+        # 	   raise ValueError("unknown mutation type")
 
         # Storing the results in an array. 
         if x%rpt_freq==0:
