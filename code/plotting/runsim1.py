@@ -5,32 +5,11 @@ import numpy as np
 import importlib 
 reload(EvoAlt) 
 
-outfiletest1 = open('SD_ns4_ic14.npy','w')
+outfiletest1 = open('SD_ns1_a01_c05_b01_mutadd0.02.npy','w')
 
-rn=100000000
-sd=[6,14,18,33] 
-freq=1000
-TT=1.7
-SS=0.3
-PP=0
-RR=1
-al=-1.4
-au=-1.3
-bl=0 
-bu=0
-m1=0.02
-m2=0.02
-m3=0.02 
-ns=4
-nntype='neu'
-mtp='add'
-ww=60
-
-x = EvoAlt.runsim(a_range_init=(al,au),w=ww,R=RR,P=PP,T=TT,S=SS,roundnum=rn,seed=sd[0],rpt_freq=freq,CHECK=False,result_type='timeseries',mut_sd=(m1,m2,m3),ntype=nntype,mut_type=mtp,nsize=4,switch='off')
+x = EvoAlt.runsim(roundnum=100000000, a_range_init=(0,1),colour_init=(0,5),R=1,S=0.3,T=1.7,P=0,w=60,seed=10,rpt_freq=1000,CHECK=False,result_type='timeseries', mut_sd=(0.02,0.02,0.02), ntype='neu', mut_type='add',nsize=1,switch='off',b_range_init=(0,1))   
 
 np.save(outfiletest1,x) 
-
-#import matplotlib.pyplot as plt
  
 #plt.title('SDagain nsize=1 test2 w=60 mut=1% mutstd=0.02+')
 #plt.plot(x[:,0],label='mean A(2)', color='blue')
