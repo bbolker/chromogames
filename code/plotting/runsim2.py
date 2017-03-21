@@ -1,17 +1,15 @@
 import sys
 sys.path.insert(0, './../models/')  # safer to do sys.path.append instead of insert.  
-import EvoAlt
+import EvoAlt2
 import numpy as np
 import importlib 
-reload(EvoAlt) 
+reload(EvoAlt2) 
 
-outfiletest2 = open('SD_ns4_ic44.npy','w')
+outfiletest1 = open('SD_ns1_a00_c05_b01_mutadd00.npy','w')
 
-x = EvoAlt.runsim(roundnum=100000000, a_range_init=(0,1),colour_init=(0,5),R=1,S=0.3,T=1.7,P=0,w=60,seed=10,rpt_freq=1000,CHECK=False,result_type='timeseries', mut_sd=(0.02,0.02,0.02), ntype='neu', mut_type='add',nsize=1,switch='off',b_range_init=(0,1))
+x = EvoAlt2.runsim(roundnum=100000000, a_range_init=(0,0),colour_init=(0,5),R=1,S=0.3,T=1.7,P=0,w=60,seed=10,rpt_freq=1000,CHECK=False,result_type='timeseries', mut_sd=(0,0.02,0.02), ntype='neu', mut_type='add',nsize=1,switch='off',b_range_init=(1,1))   
 
-np.save(outfiletest2,x) 
-
-#import matplotlib.pyplot as plt
+np.save(outfiletest1,x) 
  
 #plt.title('SDagain nsize=1 test2 w=60 mut=1% mutstd=0.02+')
 #plt.plot(x[:,0],label='mean A(2)', color='blue')
