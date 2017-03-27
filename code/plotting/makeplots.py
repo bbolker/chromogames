@@ -8,7 +8,7 @@ import matplotlib.pyplot as plt
 
 # SD_ns1_a00_c05_b01_mutadd00.npy   ,  SD_ns1_a00_c05_b01_mutadd00-2.npy  ,   SD_ns1_a00_c05_b01_mutadd00-3.npy 
 
-x = np.load('./SD_ns1_a00_c05_b01_mutadd00-3.npy')
+x = np.load('./data/col/SD_ns1_a00_c025_b01_mutadd00-3-1.npy')
  
 #plt.title('Insert Title')
 #plt.plot(x[:,0],label='mean A(2)', color='blue')
