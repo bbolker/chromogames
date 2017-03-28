@@ -1,0 +1,7 @@
+Traceback (most recent call last):
+  File "runsim3.py", line 10, in <module>
+    x = EvoAlt2.runsim(roundnum=100000000, a_range_init=(1,1),colour_init=(0,10),R=1,S=0.3,T=1.7,P=0,w=60,seed=10,rpt_freq=1000,CHECK=False,result_type='timeseries', mut_sd=(0,0.02,0.02), ntype='neu', mut_type='add',nsize=1,switch='off',b_range_init=(1,1))   
+  File "./../models/EvoAlt2.py", line 258, in runsim
+    parAlst[dc1][dc2] += numpy.random.normal(0,mut_sd[0])
+  File "mtrand.pyx", line 1479, in mtrand.RandomState.normal (numpy/random/mtrand/mtrand.c:9359)
+ValueError: scale <= 0
