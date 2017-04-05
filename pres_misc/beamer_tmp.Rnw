@@ -1,5 +1,6 @@
 \documentclass{beamer}
 \usepackage{graphicx}
+\usepackage{yfonts}
 
 \begin{document}
 
@@ -36,5 +37,11 @@ plot(1:10,1:10)
 @ 
 \end{frame}
 
+
+\begin{frame}
+%\fontfamily{yfrak}\selectfont
+
+\textfrak{\Huge The End}
+\end{frame}
 
 \end{document}
