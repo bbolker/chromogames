@@ -1,0 +1,40 @@
+\documentclass{beamer}
+\usepackage{graphicx}
+
+\begin{document}
+
+\begin{frame}
+
+Here's some text that stays constant.
+
+\only<1>{\includegraphics{pictmp1.pdf}}\only<2>{\includegraphics{pictmp2.pdf}}
+
+Here's some more stuff that stays constant.
+
+\onslide<3>{third} \onslide<4>{fourth}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Goldilocks and the three plots (1)}
+<<newchunk1,fig.width=20,fig.height=20>>=
+plot(1:10,1:10)
+@ 
+\end{frame}
+
+\begin{frame}
+\frametitle{Goldilocks and the three plots (2)}
+<<newchunk2,fig.width=2,fig.height=2>>=
+plot(1:10,1:10)
+@ 
+\end{frame}
+
+\begin{frame}
+\frametitle{Goldilocks and the three plots (3)}
+<<newchunk3,fig.width=5,fig.height=5>>=
+plot(1:10,1:10)
+@ 
+\end{frame}
+
+
+\end{document}
